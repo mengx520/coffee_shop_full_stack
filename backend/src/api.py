@@ -32,7 +32,6 @@ def public_get_drinks():
             'drinks': [drink.short() for drink in drinks]
         }), 200
     except:
-        raise
         return jsonify({
             'success': False,
             'messages': 'An error occured'}), 500
@@ -124,7 +123,8 @@ def edit_drinks(payload, id):
 
         return jsonify({
             'success': True,
-            'drinks': drink.long()
+            # make drinks into array
+            'drinks': [drink.long()]
         }), 200
     except:
         return jsonify({
